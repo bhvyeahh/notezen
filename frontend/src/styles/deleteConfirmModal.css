@@ -90,3 +90,53 @@
   background: #dc2626;
   transform: translateY(-1px);
 }
+/* 📱 Responsive Only */
+@media (max-width: 768px) {
+  .delete-modal {
+    width: 90%;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .delete-modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .delete-modal p {
+    font-size: 0.9rem;
+  }
+
+  .delete-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn-cancel,
+  .btn-confirm {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-modal {
+    width: 92%;
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .delete-modal h3 {
+    font-size: 1rem;
+  }
+
+  .delete-modal p {
+    font-size: 0.85rem;
+  }
+
+  .btn-cancel,
+  .btn-confirm {
+    font-size: 0.85rem;
+    padding: 0.65rem;
+  }
+}

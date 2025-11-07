@@ -182,11 +182,7 @@ const Dashboard = () => {
       <div className="dashboard-container">
         {/* 📊 Left Side */}
         <div className="dashboard-left">
-          <div className="dashboard-actions">
-            <button className="btn-add-card" onClick={openCreateCardModal}>
-              + New Card
-            </button>
-          </div>
+         
 
           <ProgressCards
             user={userData}
@@ -195,7 +191,11 @@ const Dashboard = () => {
             onClickReviewed={showReviewedToday}
             onClickAllCards={showAllCards}
           />
-
+ <div className="dashboard-actions">
+            <button className="btn-add-card" onClick={openCreateCardModal}>
+              + New Card
+            </button>
+          </div>
           {viewMode === "default" && (
             <ReviewQueue
               cards={reviewCards}

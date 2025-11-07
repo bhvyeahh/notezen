@@ -99,3 +99,92 @@
   color: #3b82f6;
   transform: scale(1.15);
 }
+
+
+/* 📱 Responsive Only */
+@media (max-width: 992px) {
+  .reviewed-list {
+    padding: 1rem;
+  }
+
+  .simple-card {
+    padding: 0.9rem;
+  }
+
+  .simple-card .answer {
+    font-size: 0.9rem;
+  }
+
+  .delete-icon,
+  .edit-icon {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .btn-back {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .simple-card {
+    padding: 0.8rem;
+  }
+
+  .simple-card .q {
+    font-size: 0.95rem;
+  }
+
+  .simple-card .answer {
+    font-size: 0.9rem;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviewed-list {
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .simple-card {
+    padding: 0.7rem;
+    border-radius: 8px;
+  }
+
+  .simple-card .q {
+    font-size: 0.9rem;
+  }
+
+  .simple-card .meta {
+    font-size: 0.8rem;
+  }
+
+  .simple-card .answer {
+    font-size: 0.85rem;
+  }
+
+  .btn-back {
+    font-size: 0.8rem;
+    padding: 4px 7px;
+  }
+
+  .delete-icon,
+  .edit-icon {
+    font-size: 0.9rem;
+  }
+}

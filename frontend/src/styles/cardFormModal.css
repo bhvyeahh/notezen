@@ -88,3 +88,57 @@
   from { transform: translateY(-10px); opacity: 0.8; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* 📱 Responsive Only */
+@media (max-width: 768px) {
+  .cardform-modal {
+    width: 90%;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .cardform-modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .cardform-form textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .btn-cancel,
+  .btn-save {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardform-modal {
+    width: 92%;
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .cardform-modal h3 {
+    font-size: 1rem;
+  }
+
+  .cardform-form textarea {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .btn-cancel,
+  .btn-save {
+    font-size: 0.85rem;
+    padding: 0.65rem;
+  }
+}

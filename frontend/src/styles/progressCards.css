@@ -53,3 +53,73 @@
   font-weight: 600;
   color: var(--text-main);
 }
+
+/* 📱 Responsive Only */
+@media (max-width: 992px) {
+  .progress-cards {
+    gap: 0.8rem;
+  }
+
+  .progress-card {
+    padding: 0.8rem;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .text h4 {
+    font-size: 0.9rem;
+  }
+
+  .text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-cards {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .progress-card {
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+
+  .icon {
+    font-size: 1.6rem;
+  }
+
+  .text h4 {
+    font-size: 0.9rem;
+  }
+
+  .text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-section {
+    padding: 1rem;
+  }
+
+  .progress-card {
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .icon {
+    font-size: 1.4rem;
+  }
+
+  .text h4 {
+    font-size: 0.85rem;
+  }
+
+  .text p {
+    font-size: 0.9rem;
+  }
+}

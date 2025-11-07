@@ -80,3 +80,63 @@
 .btn-apply:hover {
   background: #2563eb;
 }
+/* 📱 Responsive Only */
+@media (max-width: 768px) {
+  .filter-modal {
+    width: 90%;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .filter-modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .filter-group label {
+    font-size: 0.85rem;
+  }
+
+  .filter-group select {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .btn-cancel,
+  .btn-apply {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-modal {
+    width: 92%;
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .filter-modal h3 {
+    font-size: 1rem;
+  }
+
+  .filter-group label {
+    font-size: 0.8rem;
+  }
+
+  .filter-group select {
+    font-size: 0.8rem;
+    padding: 0.45rem;
+  }
+
+  .btn-cancel,
+  .btn-apply {
+    font-size: 0.85rem;
+    padding: 0.55rem;
+  }
+}

@@ -36,12 +36,13 @@
 
 /* Green gradient palette (GitHub-like, dynamic with theme vars) */
 .react-calendar-heatmap .color-empty {
-  fill: var(--border-color); /* ✅ visible subtle gray tone */
-  opacity: 0.5; /* light & dark balanced visibility */
+  fill: var(--border-color);
+  opacity: 0.5;
   transition: fill 0.3s ease, opacity 0.3s ease;
 }
+
 body.dark-mode .react-calendar-heatmap .color-empty {
-  fill: #334155; /* ✅ dark slate shade for dark mode */
+  fill: #334155;
   opacity: 0.7;
 }
 
@@ -80,7 +81,6 @@ body.dark-mode .react-calendar-heatmap .color-empty {
   border-radius: 2px;
 }
 
-/* Legend colors (fixed so user sees consistent reference) */
 .color-scale-1.legend-box {
   background: #bbf7d0;
 }
@@ -99,7 +99,74 @@ body.dark-mode .react-calendar-heatmap .color-empty {
   color: var(--text-sub);
   letter-spacing: 0.3px;
 }
+
 .react-calendar-heatmap rect {
-  pointer-events: none; /* ✅ makes them completely unclickable */
+  pointer-events: none;
   cursor: default;
+}
+
+/* 📱 Responsive Only */
+@media (max-width: 992px) {
+  .calendar-section {
+    padding: 1.2rem;
+  }
+
+  .calendar-section h3 {
+    font-size: 0.75rem;
+  }
+
+  .calendar-wrapper {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-section {
+    padding: 1rem;
+  }
+
+  .calendar-section h3 {
+    font-size: 0.72rem;
+  }
+
+  .calendar-wrapper {
+    transform: scale(0.75);
+  }
+
+  .calendar-legend {
+    gap: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-box {
+    width: 8px;
+    height: 5px;
+  }
+
+  .calendar-legend span {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-section {
+    padding: 0.8rem;
+  }
+
+  .calendar-section h3 {
+    font-size: 0.7rem;
+  }
+
+  .calendar-wrapper {
+    transform: scale(0.7);
+  }
+
+  .legend-box {
+    width: 7px;
+    height: 4px;
+  }
+
+  .calendar-legend span {
+    font-size: 0.55rem;
+  }
 }

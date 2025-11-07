@@ -158,3 +158,94 @@ body.dark-mode .review-card {
   color: var(--text-sub);
   font-size: 0.9rem;
 }
+
+
+/* 📱 Responsive Only */
+@media (max-width: 992px) {
+  .review-queue {
+    padding: 1.2rem;
+  }
+
+  .review-card {
+    padding: 1.2rem;
+  }
+
+  .review-question {
+    font-size: 1.1rem;
+  }
+
+  .review-actions button {
+    font-size: 0.9rem;
+    padding: 0.7rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .review-question {
+    font-size: 1rem;
+  }
+
+  .review-answer p {
+    font-size: 0.85rem;
+  }
+
+  .review-actions {
+    flex-direction: column;
+  }
+
+  .review-actions button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .empty-state {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-queue {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .review-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .review-question {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .review-answer p {
+    font-size: 0.8rem;
+  }
+
+  .review-actions button {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+    letter-spacing: 0.2px;
+  }
+
+  .empty-state {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .empty-state h3 {
+    font-size: 1rem;
+  }
+
+  .empty-state p {
+    font-size: 0.8rem;
+  }
+}
