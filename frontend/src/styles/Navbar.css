@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 16px); /* accounting for the 8px margin on both sides */
+  height: 70px;
+  padding: 0 10rem;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed; /* Needed for the shine pseudo-element */
+  overflow: hidden; /* Contain the shine effect */
+  backdrop-filter: blur(16px);
+  background: rgba(162, 161, 161, 0.196);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 9999999;
+  font-family: poppins, sans-serif;
+  transition: all 0.4s ease;
+}
+.nav-logo {
+  width: 120px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: none; /* We'll control animation separately */
+  z-index: -1;
+}
+
+/* Shine animation when not shrunk */
+.navbar:not(.shrink-nav)::before {
+    animation: shine 4s linear infinite;
+}
+
+/* Shine animation */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* More subtle shine when shrunk */
+.navbar.shrink-nav::before {
+  animation: miniShine 4s linear infinite;
+}
+
+@keyframes miniShine {
+  0% {
+    left: -50%;
+    opacity: 0.;
+    width: 50%; 
+  }
+  20% {
+    left: 100%;
+    opacity: 0.8;
+    width: 50%;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.8;
+    width: 50%;
+  }
+}
+.nav-left:hover .nav-logo {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.nav-left img {
+    width: 150px;
+    height: 120px;
+    display: flex;
+}
+.nav-left {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffffffcc;
+  letter-spacing: 1px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-right a {
+  color: #fff;
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.shrink-nav {
+  height: 50px;
+  padding: 0 2rem;
+  justify-content: center;
+}
+.nav-right a::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  transform: translateY(0%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-right a:hover::before {
+  transform: translateY(-100%);
+}
+
+.nav-right a:hover {
+  color: rgb(79, 78, 78);
+}
+
+/* SCROLL EFFECT: shrink & center */
+.shrink-nav {
+  width: 50vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(166, 165, 165, 0.217);
+  padding: 10px 30px;
+  border-radius: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+.navbar.shrink-nav .nav-left {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.navbar:not(.shrink-nav) .nav-left {
+  opacity: 1;
+  width: auto;
+  transition: all 0.4s ease;
+}
+.shrink-nav {
+  width: 50vw;
+  height: 50px;
+  padding: 0 2rem;
+  border-radius: 40px;
+  background-color: rgba(166, 165, 165, 0.217);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: all 1s ease;
+}
+/* Responsive styles */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 2rem;
+  }
+  .nav-right {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar,
+  .shrink-nav {
+    width: 70%;
+    min-width: unset;
+    max-width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 0.5rem;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  .nav-left {
+    display: none !important;
+  }
+  .nav-right {
+    gap: 0.5rem;
+  }
+  .nav-right a {
+    font-size: 1rem;
+    padding: 0 0.3rem;
+  }
+}
+

@@ -1,0 +1,135 @@
+/* src/components/Cards.css */
+
+.card-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+.card {
+  background: linear-gradient(145deg, #b4b4b42f, #a3a2a22c);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: #7471713c 1px solid;
+  width: 400px;
+  transition: transform 0.3s ease;  
+  box-shadow: 0 10px 25px rgba(56, 56, 56, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  font-size: 1.8rem;
+  padding: 0.5rem;
+  background-color: rgba(26, 26, 26, 0.114);
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  filter: invert(1) brightness(1.2) contrast(1.1);
+}
+
+h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+
+
+
+
+/* ========================= */
+/* 🌐 RESPONSIVE DESIGN */
+/* ========================= */
+
+/* Large Tablets / Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .card-container {
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .card {
+    width: 320px;
+    padding: 1.25rem;
+  }
+
+  .icon {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets (<= 768px) */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    gap: 1.2rem;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Portrait (<= 480px) */
+@media (max-width: 480px) {
+  .card-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 1rem;
+  }
+
+  .icon {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+}

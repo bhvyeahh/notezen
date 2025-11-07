@@ -1,0 +1,10 @@
+.thought-bento p{
+  color: #000000;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+
+}

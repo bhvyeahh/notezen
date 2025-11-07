@@ -1,0 +1,101 @@
+.reviewed-list {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.list-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:0.8rem;
+}
+
+.btn-back {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 0.6rem;
+}
+
+.simple-card {
+  padding: 1rem;
+  background: var(--page-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.simple-card .q {
+  margin: 0 0 6px 0;
+  color: var(--text-main);
+}
+
+.simple-card .meta {
+  margin: 0 0 8px 0;
+  color: var(--text-sub);
+}
+
+.simple-card .answer {
+  color: var(--text-sub);
+  font-size: 0.95rem;
+}
+
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.clickable-card:hover {
+  background: rgba(125, 127, 130, 0.164);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.badge.unknown {
+  background: #6b7280;
+  color: #fff;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-icon {
+  color: #f87171;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.delete-icon:hover {
+  color: #ef4444;
+  transform: scale(1.15);
+}
+
+.edit-icon {
+  color: #60a5fa;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #3b82f6;
+  transform: scale(1.15);
+}

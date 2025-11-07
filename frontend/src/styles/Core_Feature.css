@@ -1,0 +1,188 @@
+/* Sticky container setup */
+.sticky-container {
+  height: 370vh; /* enough scroll room for demo */
+  position: relative;
+  background-color: #00000031;
+  padding-top: 0vh; /* pushes text up from bottom */
+}
+
+/* Sticky animated text */
+.sticky-text {
+  position: sticky;
+  top: 40vh;
+  transform: translateY(100%);
+  animation: moveUp 0.8s ease-out forwards;
+  text-align: center;
+  z-index: 10;
+}
+
+.sticky-text h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  z-index: -573781;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframe for upward movement */
+@keyframes moveUp {
+  to {
+    transform: translateY(0);
+  }
+}
+.about-cards-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30vh;
+}
+.about-card-container {
+  display: flex;
+  z-index: 999;
+  margin: auto;
+}
+.about-ai-card {
+  width: 20vw;
+  height: 40vh;
+  z-index: 999;
+  margin: 20vh auto;
+  padding: 60px 10px;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(
+    149deg,
+    rgb(129, 74, 200) 0%,
+    var(--token-b2fb23d9-6070-4f2d-b3d0-2fe68c4f2aab, rgb(13, 13, 13))
+      /* {"name":"Card background"} */ 28.999999999999996%,
+    var(--token-b2fb23d9-6070-4f2d-b3d0-2fe68c4f2aab, rgba(13, 13, 13, 0.975))
+      /* {"name":"Card background"} */ 74%,
+    rgb(129, 74, 200) 100%
+  );
+  color: white;
+  box-shadow: 0 0 30px rgba(159, 32, 205, 0.315);
+}
+.about-card-right {
+  display: flex;
+  justify-content: center;
+  z-index: 461;
+  width: 40vw;
+  height: 60vh;
+}
+.about-card-left {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  height: 60vh;
+}
+
+
+
+/* ============================= */
+/* 🌐 RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablets (<= 1024px) */
+@media (max-width: 1024px) {
+  .sticky-container {
+    height: 300vh;
+  }
+
+  .sticky-text h2 {
+    font-size: 2.5rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .about-ai-card {
+    width: 30vw;
+    height: 35vh;
+    padding: 50px 15px;
+  }
+
+  .about-card-right,
+  .about-card-left {
+    width: 45vw;
+    height: 50vh;
+  }
+
+  .about-cards-main {
+    gap: 20vh;
+  }
+}
+
+/* Mobile Landscape (<= 768px) */
+@media (max-width: 768px) {
+  .sticky-container {
+    height: auto;
+    padding-bottom: 50px;
+  }
+
+  .sticky-text {
+    position: static;
+    transform: none;
+    animation: none;
+    padding-top: 2rem;
+  }
+
+  .sticky-text h2 {
+    font-size: 2rem;
+  }
+
+  .about-cards-main {
+    gap: 12vh;
+  }
+
+  .about-card-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .about-ai-card {
+    width: 80%;
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .about-card-right,
+  .about-card-left {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile Portrait (<= 480px) */
+@media (max-width: 480px) {
+  .sticky-container {
+    height: auto;
+  }
+
+  .sticky-text h2 {
+    font-size: 1.7rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .about-cards-main {
+    gap: 8vh;
+  }
+
+  .about-card-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-ai-card {
+    width: 90%;
+    padding: 30px 15px;
+    font-size: 0.95rem;
+  }
+
+  .about-card-right,
+  .about-card-left {
+    width: 100%;
+    height: auto;
+  }
+}

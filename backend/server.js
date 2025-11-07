@@ -1,0 +1,49 @@
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import { PORT } from './config/env.js';
+import connectToDatabase from './database/mongodb.js';
+import cors from 'cors';
+
+import authRouter from './routes/auth.routes.js';
+import userRouter from './routes/user.routes.js';
+import notesRouter from './routes/note.routes.js';
+import errorMiddleware from './middleware/error.middleware.js';
+import todoRouter from './routes/todo.routes.js';
+import cardRouter from './routes/card.routes.js';
+import reviewRouter from './routes/review.routes.js';
+
+
+const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // or 3000 if you’re using CRA
+    credentials: true,
+  })
+);
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
+
+// Routes
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/notes', notesRouter);
+app.use('/api/v1/todos', todoRouter);
+app.use('/api/v1/cards', cardRouter)
+app.use('/api/v1/review', reviewRouter)
+
+
+app.use(errorMiddleware)
+
+
+app.get('/', (req, res) => {
+    res.send('Notes App Backend is running');
+});
+
+app.listen(PORT, async() => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+    await connectToDatabase()
+});
+
+export default app;

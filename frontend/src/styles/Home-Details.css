@@ -1,0 +1,16 @@
+.home-details{
+    width: 100%;
+    height: 200%;
+    color: white;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 530px;
+}
+.home-intro{
+    font-size: 30px;
+    text-align: center;
+    /* margin-top: 100px; */
+}

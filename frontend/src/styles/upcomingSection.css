@@ -1,0 +1,48 @@
+.upcoming-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upcoming-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--page-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.upcoming-item:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.upcoming-item:hover span,
+.upcoming-item:hover p {
+  color: #fff;
+}
+
+.upcoming-item span {
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.upcoming-item p {
+  color: var(--text-main);
+  font-weight: 600;
+  margin: 0;
+}

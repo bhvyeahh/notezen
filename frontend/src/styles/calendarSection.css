@@ -1,0 +1,105 @@
+.calendar-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.calendar-section h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+/* Heatmap container */
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0 0.4rem;
+  transform: scale(0.85);
+}
+
+/* Smaller rounded cells */
+.react-calendar-heatmap rect {
+  width: 6px;
+  height: 6px;
+  rx: 2;
+  ry: 2;
+}
+
+/* Green gradient palette (GitHub-like, dynamic with theme vars) */
+.react-calendar-heatmap .color-empty {
+  fill: var(--border-color); /* ✅ visible subtle gray tone */
+  opacity: 0.5; /* light & dark balanced visibility */
+  transition: fill 0.3s ease, opacity 0.3s ease;
+}
+body.dark-mode .react-calendar-heatmap .color-empty {
+  fill: #334155; /* ✅ dark slate shade for dark mode */
+  opacity: 0.7;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: var(--heatmap-1);
+}
+.react-calendar-heatmap .color-scale-2 {
+  fill: var(--heatmap-2);
+}
+.react-calendar-heatmap .color-scale-3 {
+  fill: var(--heatmap-3);
+}
+.react-calendar-heatmap .color-scale-4 {
+  fill: var(--heatmap-4);
+}
+
+/* Weekday labels */
+.react-calendar-heatmap text {
+  font-size: 6px;
+  fill: var(--text-sub);
+  font-weight: 500;
+}
+
+/* Legend below calendar */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.3rem;
+  gap: 0.25rem;
+}
+
+.legend-box {
+  width: 10px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+/* Legend colors (fixed so user sees consistent reference) */
+.color-scale-1.legend-box {
+  background: #bbf7d0;
+}
+.color-scale-2.legend-box {
+  background: #86efac;
+}
+.color-scale-3.legend-box {
+  background: #4ade80;
+}
+.color-scale-4.legend-box {
+  background: #22c55e;
+}
+
+.calendar-legend span {
+  font-size: 0.65rem;
+  color: var(--text-sub);
+  letter-spacing: 0.3px;
+}
+.react-calendar-heatmap rect {
+  pointer-events: none; /* ✅ makes them completely unclickable */
+  cursor: default;
+}

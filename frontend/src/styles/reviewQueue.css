@@ -1,0 +1,160 @@
+.review-queue {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Section header */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.review-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.review-header span {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+/* Main card */
+.review-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .review-card {
+  background: rgba(30, 41, 59, 0.8); /* glassy dark mode card */
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.03);
+}
+
+/* Subject */
+.review-subject {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* Question */
+.review-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Answer */
+.review-answer p {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+/* Actions */
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  gap: 0.8rem;
+}
+
+.review-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+/* Button colors */
+.btn-diff {
+  background: linear-gradient(145deg, #f87171, #ef4444);
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(239, 68, 68, 0.3);
+}
+
+.btn-med {
+  background: linear-gradient(145deg, #facc15, #fbbf24);
+  color: #3b2f00;
+  box-shadow: 0 3px 6px rgba(251, 191, 36, 0.3);
+}
+
+.btn-easy {
+  background: linear-gradient(145deg, #4ade80, #22c55e);
+  color: #064e3b;
+  box-shadow: 0 3px 6px rgba(34, 197, 94, 0.3);
+}
+
+/* Hover states */
+.review-actions button:hover {
+  transform: translateY(-3px);
+  opacity: 0.95;
+}
+
+.review-actions button:active {
+  transform: scale(0.98);
+}
+
+
+/* 🔹 Smooth fade transition animation */
+.fade {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: all 0.4s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Buttons hover improvement */
+.review-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+.empty-state {
+  text-align: center;
+  color: var(--text-sub);
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.empty-state h3 {
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
