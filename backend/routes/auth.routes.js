@@ -1,16 +1,26 @@
 import { Router } from "express";
-import { signIn, signOut, signUp } from "../controllers/auth.controller.js";
+import {
+  sendOtp,
+  verifyOtp,
+  registerAfterOtp,
+  signIn,
+  signOut,
+} from "../controllers/auth.controller.js";
 import verifyToken from "../middleware/auth.middleware.js";
 import User from "../models/user.model.js";
 
 const authRouter = Router();
 
-authRouter.post('/sign-up', signUp)
+// OTP-based signup routes
+authRouter.post("/send-otp", sendOtp);
+authRouter.post("/verify-otp", verifyOtp);
+authRouter.post("/register-after-otp", registerAfterOtp);
 
-authRouter.post('/sign-in', signIn)
+// Sign-in/out
+authRouter.post("/sign-in", signIn);
+authRouter.get("/sign-out", signOut);
 
-authRouter.get('/sign-out', signOut)
-
+// Protected route example
 authRouter.get("/me", verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
