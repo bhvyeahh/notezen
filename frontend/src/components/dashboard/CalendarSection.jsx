@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useMemo } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
-import { Tooltip } from "react-tooltip"; // ✅ fixed import
+import { Tooltip } from "react-tooltip";
 import "react-calendar-heatmap/dist/styles.css";
-import "react-tooltip/dist/react-tooltip.css"; // ✅ include tooltip CSS
+import "react-tooltip/dist/react-tooltip.css";
 import "../../styles/calendarSection.css";
 
-const CalendarSection = () => {
-  // Dummy data
-  const startDate = new Date("2025-10-01");
-  const endDate = new Date("2025-10-31");
+const CalendarSection = ({ cards }) => {
+  const today = new Date();
 
-  const values = [
-    { date: "2025-10-01", count: 1 },
-    { date: "2025-10-03", count: 2 },
-    { date: "2025-10-06", count: 3 },
-    { date: "2025-10-09", count: 4 },
-    { date: "2025-10-12", count: 2 },
-    { date: "2025-10-14", count: 1 },
-    { date: "2025-10-17", count: 4 },
-    { date: "2025-10-21", count: 3 },
-    { date: "2025-10-25", count: 2 },
-    { date: "2025-10-28", count: 5 },
-  ];
+  // 🧠 Get the first and last day of current month
+  const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+  const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+  // 🧩 Adjust dynamically:
+  // Start from the *actual weekday the month begins* (e.g., Sat for Nov 2025)
+  const startDate = new Date(monthStart);
+  startDate.setDate(monthStart.getDate() - monthStart.getDay() + (monthStart.getDay() === 0 ? 0 : 0)); 
+  // basically same day, but allows grid to flow naturally based on monthStart weekday
+
+  // End date — extend to full week for symmetry
+  const endDate = new Date(monthEnd);
+  endDate.setDate(monthEnd.getDate() + (6 - monthEnd.getDay()));
+
+  // 🧮 Aggregate review counts
+  const values = useMemo(() => {
+    const reviewCountByDate = {};
+
+    cards.forEach((card) => {
+      if (card.lastReviewed) {
+        const dateObj = new Date(card.lastReviewed);
+        const dateStr = dateObj.toLocaleDateString("en-CA");
+        reviewCountByDate[dateStr] = (reviewCountByDate[dateStr] || 0) + 1;
+      }
+    });
+
+    return Object.entries(reviewCountByDate).map(([date, count]) => ({
+      date,
+      count,
+    }));
+  }, [cards]);
+
+  // 📆 Dynamic weekday labels based on this month’s start
+  const weekdayLabels = useMemo(() => {
+    const allDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const firstDay = monthStart.getDay(); // e.g., 6 (Saturday)
+    return [...allDays.slice(firstDay), ...allDays.slice(0, firstDay)];
+  }, [monthStart]);
 
   return (
     <div className="calendar-section">
@@ -33,6 +57,7 @@ const CalendarSection = () => {
           endDate={endDate}
           values={values}
           showWeekdayLabels={true}
+          weekdayLabels={weekdayLabels}
           tooltipDataAttrs={(value) => {
             if (!value?.date)
               return {
@@ -54,8 +79,6 @@ const CalendarSection = () => {
             return "color-scale-1";
           }}
         />
-
-        {/* ✅ working tooltip */}
         <Tooltip id="heatmap-tooltip" place="top" />
       </div>
 

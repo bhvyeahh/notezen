@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/SignUp.css";
 import logo from "../assets/notezen_logo.png";
 import axios from "axios";
+import { toast } from "react-toastify"; // ✅ import toastify
 
 const Signup = () => {
   const [step, setStep] = useState(1); // 1: Name+Email, 2: OTP, 3: Password
@@ -13,7 +14,6 @@ const Signup = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [info, setInfo] = useState("");
 
   // 🔒 Redirect if already logged in
   useEffect(() => {
@@ -36,12 +36,12 @@ const Signup = () => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      toast.warning("Please fill in all valid details!");
       return;
     }
 
     setErrors({});
     setLoading(true);
-    setInfo("");
 
     try {
       const res = await axios.post(
@@ -50,16 +50,16 @@ const Signup = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
+      toast.success("OTP sent successfully to your email!");
       console.log("OTP Response:", res.data);
-      setInfo("OTP sent successfully to your email!");
       setStep(2);
     } catch (err) {
       console.error("Send OTP Error:", err.response?.data || err.message);
-      setInfo("");
       const message =
         err.response?.data?.message ||
-        "Failed to send OTP. Please check your details.";
+        "Failed to send OTP. Please check your email.";
       setErrors({ email: message });
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -72,12 +72,12 @@ const Signup = () => {
     e.preventDefault();
     if (!formData.otp.trim()) {
       setErrors({ otp: "OTP is required" });
+      toast.warning("Please enter your OTP!");
       return;
     }
 
     setLoading(true);
     setErrors({});
-    setInfo("");
 
     try {
       const res = await axios.post(
@@ -86,14 +86,15 @@ const Signup = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
+      toast.success("OTP verified successfully!");
       console.log("OTP verified:", res.data);
-      setInfo("OTP verified successfully!");
       setStep(3);
     } catch (err) {
       console.error("OTP Verification Error:", err.response?.data || err.message);
-      setErrors({
-        otp: err.response?.data?.message || "Invalid or expired OTP",
-      });
+      const message =
+        err.response?.data?.message || "Invalid or expired OTP.";
+      setErrors({ otp: message });
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -108,12 +109,12 @@ const Signup = () => {
 
     if (!password.trim()) {
       setErrors({ password: "Password is required" });
+      toast.warning("Please enter a password!");
       return;
     }
 
     setLoading(true);
     setErrors({});
-    setInfo("");
 
     try {
       const res = await axios.post(
@@ -123,20 +124,20 @@ const Signup = () => {
       );
 
       console.log("Register success:", res.data);
-
       const { token, user } = res.data.data;
+
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
-      alert("Account created successfully!");
-      window.location.href = "/dashboard";
+      toast.success("Account created successfully!");
+      setTimeout(() => (window.location.href = "/dashboard"), 1200);
     } catch (err) {
       console.error("Register Error:", err.response?.data || err.message);
-      setErrors({
-        password:
-          err.response?.data?.message ||
-          "Failed to register. Please try again.",
-      });
+      const message =
+        err.response?.data?.message ||
+        "Failed to register. Please try again.";
+      setErrors({ password: message });
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -175,9 +176,6 @@ const Signup = () => {
             </h3>
           )}
         </div>
-
-        {/* Info text */}
-        {info && <p style={{ color: "#4ade80", textAlign: "center" }}>{info}</p>}
 
         {/* Step 1: Name & Email */}
         {step === 1 && (

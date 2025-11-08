@@ -89,3 +89,14 @@ body {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
 }
+.Toastify__toast-container--bottom-right {
+  bottom: 1.2rem !important;
+  right: 1.2rem !important;
+}
+
+.Toastify__toast {
+  border-radius: 10px !important;
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+}

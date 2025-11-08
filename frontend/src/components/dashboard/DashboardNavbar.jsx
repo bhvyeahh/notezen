@@ -70,7 +70,7 @@ const DashboardNavbar = ({ user, onSearch, onOpenFilter }) => {
             <FaUserCircle className="nav-user-avatar" />
             <div className="nav-user-text">
               <h4>{user?.name || "User"}</h4>
-              <span>Pro Member</span>
+
             </div>
           </div>
 

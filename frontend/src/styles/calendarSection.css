@@ -170,3 +170,98 @@ body.dark-mode .react-calendar-heatmap .color-empty {
     font-size: 0.55rem;
   }
 }
+
+/* ✅ Better scaling & padding fix */
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 0;
+  transform: scale(0.9);
+}
+
+.react-calendar-heatmap text {
+  font-size: 7px;
+  fill: var(--text-sub);
+  font-weight: 500;
+}
+/* ===== Calendar alignment fixes (add at end of calendarSection.css) ===== */
+
+/* Make the heatmap SVG behave like a normal inline block so labels line up */
+.react-calendar-heatmap {
+  display: inline-block;
+  vertical-align: top;
+  overflow: visible; /* ensure month label / tooltips don't get clipped */
+}
+
+/* Align the whole calendar to the left inside the widget so weekday labels match rows */
+.calendar-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left aligned instead of center */
+  align-items: center;
+  padding: 0.6rem 0; /* slightly more top/bottom spacing for month label */
+  transform: scale(0.9); /* slight scale if desired; adjust 0.9 → 1.0 if you prefer */
+}
+
+/* Make the month label left-aligned and visually consistent */
+.react-calendar-heatmap .month-label {
+  font-size: 14px;
+  fill: var(--text-main);
+  font-weight: 600;
+  text-anchor: start; /* anchor to the left */
+}
+
+/* Slightly larger, more even squares so grid looks tidy on your dark UI */
+.react-calendar-heatmap rect {
+  width: 8px;
+  height: 8px;
+  rx: 3; /* more rounded */
+  ry: 3;
+}
+
+/* Improve weekday label appearance and alignment */
+.react-calendar-heatmap text {
+  font-size: 10px; /* slightly bigger for readability */
+  fill: var(--text-sub);
+  font-weight: 600;
+  dominant-baseline: middle; /* vertical centering */
+}
+
+/* Reduce the built-in horizontal spacing between columns so grid is compact */
+.react-calendar-heatmap .week {
+  transform-origin: 0 0;
+  /* optional tweak: compress horizontal gap a bit */
+  /* Uncomment to shrink gap: transform: translateX(-2px); */
+}
+
+/* Tooltip z-index safety */
+.react-calendar-heatmap + .react-tooltip {
+  z-index: 2000;
+}
+/* ===== Fix weekday labels alignment and size ===== */
+.react-calendar-heatmap text {
+  font-size: 8px !important; /* smaller, more proportional */
+  fill: var(--text-sub);
+  font-weight: 500;
+  dominant-baseline: middle;
+}
+
+.react-calendar-heatmap .weekday-label {
+  transform: translateY(2px); /* subtle vertical correction */
+}
+
+/* Remove extra month label offset */
+.react-calendar-heatmap .month-label {
+  font-size: 10px !important;
+  fill: var(--text-sub);
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+/* Proper box scaling for neat spacing */
+.react-calendar-heatmap rect {
+  width: 8px !important;
+  height: 8px !important;
+  rx: 2;
+  ry: 2;
+}

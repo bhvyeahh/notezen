@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Signin.css";
 import logo from "../assets/notezen_logo.png";
 import axios from "axios";
+import { toast } from "react-toastify"; // ✅ Toastify import
 
 const Signin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -10,15 +11,13 @@ const Signin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Redirect to dashboard if already logged in
+  // ✅ Redirect if already logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      window.location.href = "/dashboard";
-    }
-  }, []);
+    if (token) navigate("/dashboard");
+  }, [navigate]);
 
-  // ✅ Validation logic
+  // ✅ Form validation
   const validate = () => {
     const newErrors = {};
 
@@ -38,15 +37,18 @@ const Signin = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ Input change handler
+  // ✅ Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Submit handler (with localStorage clearing fix)
+  // ✅ Handle submit with toast notifications
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) {
+      toast.warning("Please fix the form errors before signing in!");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -56,27 +58,23 @@ const Signin = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log("Signin response:", res.data);
-
-      const { token, user } = res.data.data;
+      const { token, user } = res.data.data || {};
 
       if (!token) {
-        alert("No token received from server. Please try again.");
+        toast.error("No token received from server. Please try again.");
         return;
       }
 
-      // ✅ Clear any previous login data before saving new
+      // ✅ Clear previous session and save new
       localStorage.clear();
-
-      // ✅ Save new session
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
 
-      // ✅ Redirect to dashboard
-      window.location.href = "/dashboard";
+      toast.success(`Welcome back, ${user?.name || "Sigma"}!`);
+      setTimeout(() => navigate("/dashboard"), 1000);
     } catch (err) {
       console.error("Signin Error:", err.response?.data || err.message);
-      alert(
+      toast.error(
         err.response?.data?.message ||
           "Invalid email or password. Please try again."
       );
@@ -95,12 +93,12 @@ const Signin = () => {
         <div className="blob-shape blob-three"></div>
       </div>
 
-      {/* 🔐 Form Section */}
+      {/* 🔐 Signin Form Section */}
       <div className="signin-form-section">
         <div className="signin-header">
           <h2>Welcome Back Sigma</h2>
           <h3>
-            Duh? Don’t have an account yet? Lmao!{" "}
+            Duh? Don’t have an account yet?{" "}
             <a href="/signup">Create one here</a>
           </h3>
         </div>
