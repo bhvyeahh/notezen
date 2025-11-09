@@ -9,12 +9,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/iconss/notezen_logo.png",
+      "src": "/iconss/notezenn_logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/iconss/notezen_logo.png",
+      "src": "/iconss/notezenn_logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

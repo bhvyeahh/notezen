@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './pwaPrompt';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';

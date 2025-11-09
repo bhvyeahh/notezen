@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/SignUp.css";
 import logo from "../assets/notezen_logo.png";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ import toastify
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [step, setStep] = useState(1); // 1: Name+Email, 2: OTP, 3: Password
@@ -14,6 +14,10 @@ const Signup = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // ✅ Base API URL from .env
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+  console.log("🌍 API Base URL:", import.meta.env.VITE_API_BASE_URL);
 
   // 🔒 Redirect if already logged in
   useEffect(() => {
@@ -45,7 +49,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5500/api/v1/auth/send-otp",
+        `${API_BASE}/auth/send-otp`,
         { name, email },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -81,7 +85,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5500/api/v1/auth/verify-otp",
+        `${API_BASE}/auth/verify-otp`,
         { email: formData.email, otp: formData.otp },
         { headers: { "Content-Type": "application/json" } }
       );
@@ -118,7 +122,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5500/api/v1/auth/register-after-otp",
+        `${API_BASE}/auth/register-after-otp`,
         { name, email, password },
         { headers: { "Content-Type": "application/json" } }
       );

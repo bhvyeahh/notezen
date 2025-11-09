@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Signin.css";
 import logo from "../assets/notezen_logo.png";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ Toastify import
+import { toast } from "react-toastify";
 
 const Signin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -11,13 +11,16 @@ const Signin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Redirect if already logged in
+  // ✅ Base API URL from environment
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+  console.log("🌍 API Base URL:", import.meta.env.VITE_API_BASE_URL);
+  // 🔒 Redirect if already logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) navigate("/dashboard");
   }, [navigate]);
 
-  // ✅ Form validation
+  // ✅ Validate input fields
   const validate = () => {
     const newErrors = {};
 
@@ -42,7 +45,7 @@ const Signin = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Handle submit with toast notifications
+  // ✅ Handle Sign In
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) {
@@ -53,7 +56,7 @@ const Signin = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "http://localhost:5500/api/v1/auth/sign-in",
+        `${API_BASE}/auth/sign-in`,
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -65,7 +68,7 @@ const Signin = () => {
         return;
       }
 
-      // ✅ Clear previous session and save new
+      // ✅ Save new session data
       localStorage.clear();
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -83,6 +86,9 @@ const Signin = () => {
     }
   };
 
+  // =========================
+  // 💅 UI
+  // =========================
   return (
     <div className="signin-page-container">
       {/* 🌈 Left Blob Section */}
@@ -125,7 +131,9 @@ const Signin = () => {
               onChange={handleChange}
               disabled={loading}
             />
-            {errors.password && <p className="error-text">{errors.password}</p>}
+            {errors.password && (
+              <p className="error-text">{errors.password}</p>
+            )}
           </div>
 
           <button type="submit" disabled={loading}>
